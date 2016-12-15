@@ -233,6 +233,24 @@ class DataRowsTableSeeder extends Seeder
 
         $dataRow = DataRow::firstOrNew([
             'data_type_id' => $postDataType->id,
+            'field'        => 'status',
+        ]);
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'select_dropdown',
+                'display_name' => 'category_id',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => '',
+            ])->save();
+        }
+
+        $dataRow = DataRow::firstOrNew([
+            'data_type_id' => $postDataType->id,
             'field'        => 'created_at',
         ]);
         if (!$dataRow->exists) {
