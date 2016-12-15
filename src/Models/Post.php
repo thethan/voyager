@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class Post extends Model
 {
     protected $fillable = [
-        'slug', 'name', 'title', 'author_id', 'seo_title', 'excerpt', 'body', 'image', 'slug', 'meta_description', 'meta_keywords', 'status', 'featured',
+        'slug', 'name', 'title', 'author_id', 'category_id', 'seo_title', 'excerpt', 'body', 'image', 'slug', 'meta_description', 'meta_keywords', 'status', 'featured',
     ];
 
     public function save(array $options = [])
@@ -24,5 +24,10 @@ class Post extends Model
     public function author_id()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function category_id()
+    {
+        return $this->belongsTo(Category::class);
     }
 }
